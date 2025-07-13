@@ -12,7 +12,7 @@ import TheWelcome from "./components/TheWelcome.vue";
       width="125"
       height="125"
     />
-
+    <button class="btn btn-info">Test bootstrap</button>
     <div class="wrapper">
       <HelloWorld msg="Hello world" />
     </div>
