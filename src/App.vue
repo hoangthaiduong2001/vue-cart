@@ -10,7 +10,7 @@ import TheHeader from "./components/TheHeader.vue";
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <ProductList />
   </main>
 </template>
