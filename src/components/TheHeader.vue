@@ -64,6 +64,7 @@
       </div>
     </div>
   </nav>
+  <app-modal />
 </template>
 
 <script>
