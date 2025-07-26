@@ -1,9 +1,9 @@
 <template>
   <div class="card text-left">
-    <img class="card-img-top" src="../../public/image/shopping.webp" alt="" />
+    <img class="card-img-top" :src="productItem.image" alt="" />
     <div class="card-body">
-      <h4 class="card-title">laptop gaming</h4>
-      <p class="card-text text-danger">30.000.000 VND</p>
+      <h4 class="card-title">{{ productItem.name }}</h4>
+      <p class="card-text text-danger">{{ productItem.price }} VND</p>
       <button class="btn btn-danger ml-2">Buy</button>
       <button class="btn btn-info ml-2">Info</button>
     </div>
@@ -11,7 +11,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    productItem: {
+      type: Object,
+    },
+  },
+};
 </script>
 
 <style></style>
