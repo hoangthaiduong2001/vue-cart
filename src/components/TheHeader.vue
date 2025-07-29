@@ -13,7 +13,10 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div
+        class="d-flex justify-content-between navbar-collapse"
+        id="navbarSupportedContent"
+      >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -55,7 +58,7 @@
             </button>
           </form>
           <div class="ml-2">
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" @click="handleOpenModal">
               <i class="fa fa-shopping-cart"></i>
               <span class="badge badge-light ml-2">0</span>
             </button>
@@ -64,11 +67,36 @@
       </div>
     </div>
   </nav>
-  <app-modal />
+  <teleport to="#app">
+    <app-modal :isOpen="isOpenModalCardList" :closeModal="handleCloseModal">
+      <section>
+        <CartList />
+      </section>
+    </app-modal>
+  </teleport>
 </template>
 
 <script>
-export default {};
+import CartList from "./CartList.vue";
+
+export default {
+  components: {
+    CartList,
+  },
+  data() {
+    return {
+      isOpenModalCardList: false,
+    };
+  },
+  methods: {
+    handleOpenModal() {
+      this.isOpenModalCardList = true;
+    },
+    handleCloseModal() {
+      this.isOpenModalCardList = false;
+    },
+  },
+};
 </script>
 
 <style>

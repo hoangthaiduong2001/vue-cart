@@ -1,20 +1,34 @@
 <template>
-  <div class="modal">
-    <div class="modal__container">
+  <div v-if="isOpen" class="modal" @click="handleCloseModal">
+    <div class="modal__container" @click.stop>
       <div class="modal__header">
         <h1 class="modal__title">Cart</h1>
-        <div class="modal__close">
+        <div class="modal__close" @click="handleCloseModal">
           <i class="fa fa-times"></i>
         </div>
       </div>
-      <div class="modal__body">Content</div>
+      <div class="modal__body"><slot></slot></div>
       <div class="modal_footer">Footer</div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    isOpen: {
+      type: Boolean,
+    },
+    closeModal: {
+      type: Function,
+    },
+  },
+  methods: {
+    handleCloseModal() {
+      this.closeModal();
+    },
+  },
+};
 </script>
 
 <style>
