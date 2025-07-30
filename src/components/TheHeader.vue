@@ -70,7 +70,7 @@
   <teleport to="#app">
     <app-modal :isOpen="isOpenModalCardList" :closeModal="handleCloseModal">
       <section>
-        <CartList />
+        <CartList :dataCart="cartList" />
       </section>
     </app-modal>
   </teleport>
@@ -82,6 +82,12 @@ import CartList from "./CartList.vue";
 export default {
   components: {
     CartList,
+  },
+  props: {
+    cartList: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {

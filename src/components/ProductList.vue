@@ -7,7 +7,7 @@
         :key="index"
         class="col-lg-3"
       >
-        <ProductItem :productItem="productItem" />
+        <ProductItem :productItem="productItem" @buy-item="handleBuy" />
       </div>
     </div>
   </section>
@@ -106,6 +106,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    handleBuy(data) {
+      this.$emit("buy-item", data);
+    },
   },
 };
 </script>

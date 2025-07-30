@@ -1,4 +1,5 @@
 <template>
+  <span class="badge badge-light ml-2">{{ cartList.length }}</span>
   <table class="table">
     <thead>
       <tr>
@@ -12,9 +13,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td scope="row">1</td>
-        <td>Laptop</td>
+      <tr v-for="(cart, index) in cartList" :key="index">
+        <td scope="row">{{ index + 1 }}</td>
+        <td>{{ cart.name }}</td>
         <td>23000000 VND</td>
         <td>3</td>
         <td>
@@ -38,7 +39,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    cartList: {
+      required: true,
+      type: Array,
+    },
+  },
+};
 </script>
 
 <style></style>
