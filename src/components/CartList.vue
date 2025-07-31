@@ -1,5 +1,5 @@
 <template>
-  <span class="badge badge-light ml-2">{{ cartList.length }}</span>
+  <span class="badge badge-light ml-2">{{ dataCart.length }}</span>
   <table class="table">
     <thead>
       <tr>
@@ -13,16 +13,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(cart, index) in cartList" :key="index">
+      <tr v-for="(cart, index) in dataCart" :key="index">
         <td scope="row">{{ index + 1 }}</td>
         <td>{{ cart.name }}</td>
-        <td>23000000 VND</td>
-        <td>3</td>
+        <td>{{ cart.price }}</td>
+        <td>{{ cart.quantityInStock }}</td>
         <td>
           <button class="btn btn-success">
             <i class="fa fa-arrow-up"></i>
           </button>
-          <span class="mx-2">2</span>
+          <span class="mx-2">0</span>
           <button class="btn btn-success">
             <i class="fa fa-arrow-down"></i>
           </button>
@@ -41,12 +41,10 @@
 <script>
 export default {
   props: {
-    cartList: {
+    dataCart: {
       required: true,
       type: Array,
     },
   },
 };
 </script>
-
-<style></style>

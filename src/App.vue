@@ -5,14 +5,14 @@ import TheHeader from "./components/TheHeader.vue";
 
 const cartList = ref([]);
 function handleBuy(data) {
-  cartList.value = [...cartList.value, data];
+  cartList.value.push(data);
 }
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <TheHeader :cartList="cartList.value" />
+      <TheHeader :cartList="cartList" />
     </div>
   </header>
 
