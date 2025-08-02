@@ -70,7 +70,7 @@
   <teleport to="#app">
     <app-modal :isOpen="isOpenModalCardList" :closeModal="handleCloseModal">
       <section>
-        <CartList :dataCart="cartList" />
+        <CartList :dataCart="cartList" @delete-cart="handleDelete" />
       </section>
     </app-modal>
   </teleport>
@@ -99,6 +99,9 @@ export default {
     },
     handleCloseModal() {
       this.isOpenModalCardList = false;
+    },
+    handleDelete(data) {
+      this.$emit("delete-cart", data);
     },
   },
 };
