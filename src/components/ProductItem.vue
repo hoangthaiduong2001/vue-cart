@@ -12,17 +12,21 @@
   </div>
   <teleport to="#app">
     <app-modal :isOpen="isOpenModalCartDetail" :closeModal="handleCloseModal">
-      <h1>Test</h1>
+      <ProductDetail :productDetail="productItem" />
     </app-modal>
   </teleport>
 </template>
 
 <script>
+import ProductDetail from "./ProductDetail.vue";
 export default {
   data() {
     return {
       isOpenModalCartDetail: false,
     };
+  },
+  components: {
+    ProductDetail,
   },
   props: {
     productItem: {
