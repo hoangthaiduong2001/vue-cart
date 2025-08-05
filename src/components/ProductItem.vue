@@ -7,13 +7,23 @@
       <button class="btn btn-danger ml-2" @click="handleBuyItem(productItem)">
         Buy
       </button>
-      <button class="btn btn-info ml-2">Info</button>
+      <button class="btn btn-info ml-2" @click="handleOpenModal">Info</button>
     </div>
   </div>
+  <teleport to="#app">
+    <app-modal :isOpen="isOpenModalCartDetail" :closeModal="handleCloseModal">
+      <h1>Test</h1>
+    </app-modal>
+  </teleport>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      isOpenModalCartDetail: false,
+    };
+  },
   props: {
     productItem: {
       type: Object,
@@ -22,6 +32,12 @@ export default {
   methods: {
     handleBuyItem(data) {
       this.$emit("buy-item", data);
+    },
+    handleCloseModal() {
+      this.isOpenModalCartDetail = false;
+    },
+    handleOpenModal() {
+      this.isOpenModalCartDetail = true;
     },
   },
 };
