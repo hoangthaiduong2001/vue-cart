@@ -60,7 +60,7 @@
           <div class="ml-2">
             <button class="btn btn-danger" @click="handleOpenModal">
               <i class="fa fa-shopping-cart"></i>
-              <span class="badge badge-light ml-2">0</span>
+              <span class="badge badge-light ml-2">{{ sumAmount }}</span>
             </button>
           </div>
         </div>
@@ -70,7 +70,11 @@
   <teleport to="#app">
     <app-modal :isOpen="isOpenModalCardList" :closeModal="handleCloseModal">
       <section>
-        <CartList :dataCart="cartList" @delete-cart="handleDelete" />
+        <CartList
+          :dataCart="cartList"
+          @delete-cart="handleDelete"
+          @handle-up-down="handleUpOrDownAmount"
+        />
       </section>
     </app-modal>
   </teleport>
@@ -102,6 +106,14 @@ export default {
     },
     handleDelete(data) {
       this.$emit("delete-cart", data);
+    },
+    handleUpOrDownAmount(params) {
+      this.$emit("handle-up-down", params);
+    },
+  },
+  computed: {
+    sumAmount() {
+      return this.cartList.reduce((sum, cart) => (sum += cart.quantity), 0);
     },
   },
 };

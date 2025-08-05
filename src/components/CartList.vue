@@ -19,11 +19,17 @@
         <td>{{ cart.price }} VND</td>
         <td>{{ cart.quantityInStock }}</td>
         <td>
-          <button class="btn btn-success">
+          <button
+            class="btn btn-success"
+            @click="handleUpOrDownAmount(true, cart)"
+          >
             <i class="fa fa-arrow-up"></i>
           </button>
           <span class="mx-2">{{ cart.quantity }}</span>
-          <button class="btn btn-success">
+          <button
+            class="btn btn-success"
+            @click="handleUpOrDownAmount(false, cart)"
+          >
             <i class="fa fa-arrow-down"></i>
           </button>
         </td>
@@ -66,6 +72,9 @@ export default {
   methods: {
     handleDelete(data) {
       this.$emit("delete-cart", data);
+    },
+    handleUpOrDownAmount(status, cart) {
+      this.$emit("handle-up-down", { status, cart });
     },
   },
 };
